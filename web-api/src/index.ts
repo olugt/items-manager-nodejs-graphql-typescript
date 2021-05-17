@@ -3,7 +3,10 @@ import { graphqlHTTP } from "express-graphql";
 import { schema } from './graphql/schemas/index';
 import cors from "cors";
 import servicesModel from "../../services";
+import dotenv from "dotenv";
+
 const app = express();
+dotenv.config();
 
 app.use(cors());
 
@@ -13,4 +16,4 @@ app.use("/graphql", graphqlHTTP({
     graphiql: true
 }));
 
-app.listen(3001, () => console.log("App now running."));
+app.listen(Number.parseInt(<string>process.env.PORT), () => console.log("App now running."));
