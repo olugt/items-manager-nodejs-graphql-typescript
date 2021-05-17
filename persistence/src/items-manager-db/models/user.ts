@@ -1,7 +1,7 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { Optional } from "sequelize/types";
 import { Item } from "./item";
-import { dbModelsType } from '../main/types/dbModelsType';
+import { dbManagerType } from '../main/types/dbManagerType';
 import { getProcessedModel } from '../main/logic/modelLogic';
 
 interface UserAttributes {
@@ -25,9 +25,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes>
   emailAddress!: string;
   passwordHash!: string;
 
-  static associate(models: dbModelsType) {
+  static associate(dbManager: dbManagerType) {
     // define association here
-    const ItemModel = getProcessedModel(models, Item);
+    const ItemModel = getProcessedModel(dbManager, Item);
     User.hasMany(ItemModel);
   }
 };
