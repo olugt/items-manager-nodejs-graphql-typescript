@@ -9,6 +9,11 @@ const { Sequelize, DataTypes } = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(path.join(__dirname, relativeDbDirectoryMain, "config/config.json"))[env];
+
+
+/** 
+ * @type {{sequelize: Sequelize, Sequelize: typeof Sequelize}}
+ */
 const db = {};
 
 /**
@@ -29,10 +34,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    console.log(require(path.join(__dirname, file)))
-    console.log(file)
     const model = require(path.join(__dirname, file)).processModel(sequelize, DataTypes);
-    console.log(model.name + " ...model.name")
     // @ts-ignore
     db[model.name] = model;
   });
@@ -40,7 +42,6 @@ fs
 Object.keys(db).forEach(modelName => {
   // @ts-ignore
   if (db[modelName].associate) {
-    console.log(modelName + " ...modelName")
     // @ts-ignore
     db[modelName].associate(db);
   }

@@ -1,6 +1,8 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { Optional } from "sequelize/types";
 import { Item } from "./item";
+import { dbModelsType } from '../main/types/dbModelsType';
+import { getProcessedModel } from '../main/logic/modelLogic';
 
 interface UserAttributes {
   id: number;
@@ -23,9 +25,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes>
   emailAddress!: string;
   passwordHash!: string;
 
-  static associate(models: any) {
+  static associate(models: dbModelsType) {
     // define association here
-    const ItemModel = models[User.name] as typeof Item;
+    const ItemModel = getProcessedModel(models, Item);
     User.hasMany(ItemModel);
   }
 };
