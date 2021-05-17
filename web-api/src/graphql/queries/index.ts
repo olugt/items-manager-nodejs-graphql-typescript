@@ -1,12 +1,13 @@
 import { GraphQLObjectType, GraphQLString } from "graphql";
+import { ServicesModelInterface } from "../../../../services/dist/interfaces/ServicesModelInterface";
 
 export const query = new GraphQLObjectType({
     name: "Query",
     fields: {
-        getHello: {
+        healthCheck: {
             type: GraphQLString,
-            resolve: (source, args, { sample }, info) => {
-                return "Hello there. " + sample;
+            resolve: (source, args, context: ServicesModelInterface, info) => {
+                return "Server is running, from query. " + context.checkHealth();
             }
         }
     }
