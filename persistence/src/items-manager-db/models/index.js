@@ -29,7 +29,10 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
+    console.log(require(path.join(__dirname, file)))
+    console.log(file)
+    const model = require(path.join(__dirname, file)).processModel(sequelize, DataTypes);
+    console.log(model.name + " ...model.name")
     // @ts-ignore
     db[model.name] = model;
   });
@@ -37,6 +40,7 @@ fs
 Object.keys(db).forEach(modelName => {
   // @ts-ignore
   if (db[modelName].associate) {
+    console.log(modelName + " ...modelName")
     // @ts-ignore
     db[modelName].associate(db);
   }
