@@ -1,8 +1,8 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { Optional } from "sequelize/types";
 import { Item } from "./item";
-import { dbManagerType } from '../main/types/dbManagerType';
-import { getProcessedModel } from '../main/logic/modelLogic';
+import { dbManagerType } from '../extras/types/dbManagerType';
+import { getProcessedModel } from '../extras/logic/modelLogic';
 
 interface UserAttributes {
   id: number;

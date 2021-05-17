@@ -1,6 +1,6 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { Optional } from "sequelize/types";
-import { dbManagerType } from '../main/types/dbManagerType';
+import { dbManagerType } from '../extras/types/dbManagerType';
 
 interface ItemAttributes {
   id: number;
