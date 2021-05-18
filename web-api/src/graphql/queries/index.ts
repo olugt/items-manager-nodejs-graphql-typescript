@@ -4,7 +4,7 @@ import { ServicesModelInterface } from "../../../../services/dist/interfaces/Ser
 export const query = new GraphQLObjectType({
     name: "Query",
     fields: {
-        healthCheck: {
+        index: {
             type: GraphQLString,
             resolve: (source, args, context: ServicesModelInterface, info) => {
                 return "Server is running, from query. " + context.checkHealth();
