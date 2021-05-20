@@ -1,6 +1,6 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import { Optional } from "sequelize/types";
-import { dbManagerType } from '../extras/types/dbManagerType';
+import { DbManagerType } from '../extras/types/DbManagerType';
 
 interface ItemAttributes {
   id: number;
@@ -16,7 +16,7 @@ export class Item extends Model<ItemAttributes, ItemCreationAttributes>
   title!: string;
   userId!: number;
 
-  static associate(dbManager: dbManagerType) {
+  static associate(dbManager: DbManagerType) {
     // define association here
   }
 };

@@ -2,8 +2,8 @@ import express from "express";
 import { graphqlHTTP } from "express-graphql";
 import { schema } from './graphql/schemas/index';
 import cors from "cors";
-import servicesModel from "../../services";
 import dotenv from "dotenv";
+import { servicesModel } from "../../services";
 
 const app = express();
 dotenv.config();
