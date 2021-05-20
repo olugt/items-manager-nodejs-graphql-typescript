@@ -1,8 +1,8 @@
 import { GraphQLSchema } from "graphql";
-import { mutation } from "../mutations";
-import { query } from "../queries";
+import { Mutation } from "../mutations";
+import { Query } from "../queries";
 
 export const schema = new GraphQLSchema({
-    query: query,
-    mutation: mutation
+    query: Query,
+    mutation: Mutation
 })

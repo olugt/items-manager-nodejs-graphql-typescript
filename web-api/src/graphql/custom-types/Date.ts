@@ -1,7 +1,7 @@
 import { GraphQLScalarType, Kind } from "graphql";
 
-const DateScalarType = new GraphQLScalarType({
-    name: 'DateTime',
+export const DateCustomType = new GraphQLScalarType({
+    name: 'DateCustomType',
     description: 'Date and time type',
     serialize(value: Date) {
         return value.toISOString(); // Convert outgoing Date to ISO format string.
@@ -16,5 +16,3 @@ const DateScalarType = new GraphQLScalarType({
         return null;
     }
 });
-
-export default DateScalarType;

@@ -1,9 +1,9 @@
 import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql";
-import { ServicesModelInterface } from "../../../../services/dist/interfaces/ServicesModelInterface";
-import { credentialsInput, credentialsInputType } from '../inputs/credentials';
-import { tokenDetailOutput, tokenDetailOutputType } from '../outputs/tokenDetail';
+import { CredentialsInput, CredentialsInputType } from '../inputs/credentials';
+import { TokenDetailOrErrorOutput, TokenDetailOrErrorOutputType } from '../outputs/tokenDetail';
+import { ServicesModelInterface } from "../../../../services";
 
-export const mutation = new GraphQLObjectType({
+export const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: {
         index: {
@@ -13,16 +13,16 @@ export const mutation = new GraphQLObjectType({
             }
         },
         login: {
-            type: new GraphQLNonNull(tokenDetailOutput),
+            type: new GraphQLNonNull(TokenDetailOrErrorOutput),
             args: {
                 credentials: {
-                    type: new GraphQLNonNull(credentialsInput)
+                    type: new GraphQLNonNull(CredentialsInput)
                 }
             },
-            resolve: (source, _args, context, info): tokenDetailOutputType => {
-                const args = _args as { credentials: credentialsInputType };
+            resolve: (source, _args, context, info): TokenDetailOrErrorOutputType => {
+                const args = _args as { credentials: CredentialsInputType };
 
-                return { token: "dummy token", emailAddress: args.credentials.emailAddress, expiryDatetime: new Date() }
+                return { kind: "TokenDetailOutputType", token: "dummy token", emailAddress: args.credentials.emailAddress, expiryDatetime: new Date("2022-01-23T01:00:00Z") }
             }
         }
     }

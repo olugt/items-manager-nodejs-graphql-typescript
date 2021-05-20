@@ -1,11 +1,11 @@
 import { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } from 'graphql';
 
-export type credentialsInputType = {
+export type CredentialsInputType = {
     emailAddress: string,
     password: string
 }
 
-export const credentialsInput = new GraphQLInputObjectType({
+export const CredentialsInput = new GraphQLInputObjectType({
     name: "CredentialsInput",
     fields: () => ({
         emailAddress: {

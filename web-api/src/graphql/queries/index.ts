@@ -1,7 +1,7 @@
 import { GraphQLObjectType, GraphQLString } from "graphql";
-import { ServicesModelInterface } from "../../../../services/dist/interfaces/ServicesModelInterface";
+import { ServicesModelInterface } from "../../../../services";
 
-export const query = new GraphQLObjectType({
+export const Query = new GraphQLObjectType({
     name: "Query",
     fields: {
         index: {
