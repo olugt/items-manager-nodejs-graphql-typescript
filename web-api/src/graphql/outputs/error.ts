@@ -1,13 +1,9 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql"
-import { ERROR_CODES, ErrorDataType } from "../../../../common";
+import { ErrorDataModel, ErrorModel } from "../../../../common";
 
 export type ErrorOutputType = {
     kind: "ErrorOutputType",
-    error: {
-        message: string,
-        data?: ErrorDataType[],
-        code: ERROR_CODES
-    }
+    error: ErrorModel<ErrorDataModel[] | null>
 }
 
 export const ErrorOutput = new GraphQLObjectType({

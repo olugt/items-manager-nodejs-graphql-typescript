@@ -1,4 +1,5 @@
 import { ERROR_CODES } from "./enumerations/ErrorCodesEnum";
-import { ErrorDataType } from "./models/ErrorModel";
+import { ErrorDataModel } from "./models/ErrorDataModel";
+import { ErrorModel } from "./models/ErrorModel";
 
-export { ERROR_CODES, ErrorDataType }
+export { ERROR_CODES, ErrorDataModel, ErrorModel }
